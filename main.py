@@ -1,30 +1,8 @@
 import logging
-import json
 from fastapi import FastAPI
 
 from api.routes import router
-
-class JsonFormatter(logging.Formatter):
-    def format(self, record):
-        log_record = {
-            "level": record.levelname,
-            "logger": record.name,
-            "message": record.getMessage(),
-        }
-        return json.dumps(log_record, ensure_ascii=False)
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(JsonFormatter())
-
-file_handler = logging.FileHandler("logs/app.log", encoding='utf-8')
-file_handler.setFormatter(JsonFormatter())
-
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
-
+from config.logger import logger
 
 app = FastAPI(
     title="LLM Service",
@@ -34,7 +12,27 @@ app = FastAPI(
 
 app.include_router(router)
 
+from middleware import log_middleware
+app.middleware("http")(log_middleware)
+
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Application started")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    logger.info("Application shutdown")
+
 @app.get("/")
 async def root():
+    logger.info("Root endpoint accessed")
     return {"status": "ok",
             "service": "LLM Service"}
+
+
+@app.get("/health")
+async def health():
+    logger.info("Health check performed")
+    return {"status": "healthy"}

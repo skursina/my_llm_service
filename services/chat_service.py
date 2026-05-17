@@ -17,10 +17,13 @@ class ChatService:
     async def process_message(self, message: str) -> dict:
         start_time = time.time()
 
-        logger.info({
-            "event": "pipeline_started",
-            "message": message,
-        })
+        logger.info(
+            "Pipeline started",
+            extra={
+                "event": "pipeline_started",
+                "message": message
+            }
+        )
 
         cache_key = self.cache.make_key(
             message=message,
@@ -32,11 +35,20 @@ class ChatService:
         cached_answer = self.cache.get(cache_key)
 
         if cached_answer:
-            return {
+            result = {
                 "answer": cached_answer,
                 "source": "cache",
                 "execution_time_sec": round(time.time() - start_time, 3),
             }
+            logger.info(
+                "Cache hit",
+                extra={
+                    "event": "cache_hit",
+                    "message": message,
+                    "answer": cached_answer
+                }
+            )
+            return result
 
         messages = build_prompt(message)
 
@@ -47,11 +59,15 @@ class ChatService:
 
             self.cache.set(cache_key, answer)
 
-            logger.info({
-                "event": "pipeline_finished",
-                "source": "llm",
-                "execution_time_sec": round(time.time() - start_time, 3),
-            })
+            logger.info(
+                "Pipeline finished",
+                extra={
+                    "event": "pipeline_finished",
+                    "source": "llm",
+                    "execution_time_sec": round(time.time() - start_time, 3),
+                    "answer": answer
+                }
+            )
 
             return {
                 "answer": answer,
@@ -63,6 +79,7 @@ class ChatService:
             logger.error({
                 "event": "fallback",
                 "error": str(error),
+                "type": type(error).__name__
             })
 
             return {

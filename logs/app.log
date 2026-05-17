@@ -1,0 +1,81 @@
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "extra": {"method": "GET", "url": "http://127.0.0.1:8080/docs", "client_host": "127.0.0.1"}, "method": "GET", "url": "http://127.0.0.1:8080/docs", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "extra": {"status_code": 200, "duration_sec": 0.001}, "status_code": 200, "duration_sec": 0.001}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "extra": {"method": "GET", "url": "http://127.0.0.1:8080/openapi.json", "client_host": "127.0.0.1"}, "method": "GET", "url": "http://127.0.0.1:8080/openapi.json", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "extra": {"status_code": 200, "duration_sec": 0.004}, "status_code": 200, "duration_sec": 0.004}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Root endpoint accessed"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.001}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/favicon.ico", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 404, "duration_sec": 0.001}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Root endpoint accessed"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.001}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/favicon.ico", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 404, "duration_sec": 0.0}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/docs", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.0}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "GET", "url": "http://localhost:8080/openapi.json", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.003}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "POST", "url": "http://localhost:8080/chat", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.004}
+{"level": "INFO", "logger": "llm_service", "message": "Incoming request", "method": "POST", "url": "http://localhost:8080/chat", "client_host": "127.0.0.1"}
+{"level": "INFO", "logger": "llm_service", "message": "Request completed", "status_code": 200, "duration_sec": 0.939}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
+{"level": "INFO", "logger": "llm_service", "message": "Application shutdown"}
+{"level": "INFO", "logger": "llm_service", "message": "Application started"}
