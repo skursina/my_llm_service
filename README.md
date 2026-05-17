@@ -110,10 +110,6 @@ llm_service/
 ├── config/ # Конфигурация
 │   ├── settings.py # Настройки из .env
 │   └── logger.py # JSON логгер
-├── tests/ # Тесты
-│   ├── test_api.py
-│   ├── test_cache.py
-│   └── test_chat_service.py
 ├── middleware.py # HTTP middleware
 ├── main.py # Точка входа
 ├── requirements.txt # Зависимости
