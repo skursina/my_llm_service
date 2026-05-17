@@ -15,16 +15,6 @@ app.include_router(router)
 from middleware import log_middleware
 app.middleware("http")(log_middleware)
 
-
-@app.on_event("startup")
-async def startup_event():
-    logger.info("Application started")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    logger.info("Application shutdown")
-
 @app.get("/")
 async def root():
     logger.info("Root endpoint accessed")
