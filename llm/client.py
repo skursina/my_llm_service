@@ -6,7 +6,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 
 from config.settings import settings
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("llm_service")
 
 
 class LLMClient:
@@ -45,10 +45,8 @@ class LLMClient:
         logger.info(
             "LLM API call",
             extra={
-                "extra": {
-                    "model": self.model,
-                    "messages_count": len(messages)
-                }
+                "model": self.model,
+                "messages_count": len(messages)
             }
         )
 
@@ -62,10 +60,43 @@ class LLMClient:
         # Проверяем статус ответа
         response.raise_for_status()
         data = response.json()
+        
+        # Надежная проверка структуры ответа
+        if not data:
+            raise ValueError("Пустой ответ от LLM")
+            
+        # Попробуем разные возможные структуры ответа
+        answer = None
+        
+        # Попытка 1: Стандартная структура OpenAI
+        if 'choices' in data and len(data['choices']) > 0:
+            choice = data['choices'][0]
+            if 'message' in choice and 'content' in choice['message']:
+                answer = choice['message']['content']
+            elif 'text' in choice:
+                answer = choice['text']
+                
+        # Попытка 2: Прямой ответ (некоторые API возвращают текст напрямую)
+        if not answer and 'content' in data:
+            answer = data['content']
+            
+        # Попытка 3: Поле response или answer
+        if not answer and 'response' in data:
+            answer = data['response']
+        if not answer and 'answer' in data:
+            answer = data['answer']
+            
+        if not answer:
+            raise ValueError(f"Не удалось извлечь ответ из данных LLM: {data}")
 
-        if not data.get("choices") or len(data["choices"]) == 0:
-            raise ValueError("Ответ LLM не содержит choices")
-
-        answer = data['choices'][0]['message']['content']
-        logger.info("LLM API response received")
+        logger.info(
+           "LLM API response received",
+            extra={
+                "event": "llm_response",
+                "model": self.model,
+                "answer": answer,
+                "completion_tokens": data.get("usage", {}).get("completion_tokens"),
+                }
+        )
+        
         return answer

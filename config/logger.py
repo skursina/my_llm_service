@@ -5,16 +5,31 @@ import json
 
 class JsonFormatter(logging.Formatter):
     def format(self, record):
+        # Создаем базовую запись
         log_record = {
             "level": record.levelname,
-            "logger": record.name,
             "message": record.getMessage(),
         }
-        if hasattr(record, 'extra'):
-            log_record.update(record.extra)
-        # Поддержка вложенных extra
-        if getattr(record, 'extra', None) and isinstance(record.extra, dict):
-            log_record.update(record.extra)
+        
+        extra_fields = [
+            'event',
+            'user_message',
+            'answer',
+            'source',
+            'execution_time_sec',
+            'status_code',
+            'duration_sec',
+            'method',
+            'url',
+            'model',
+            'messages_count',
+            'completion_tokens',
+        ]
+
+        for field in extra_fields:
+            if hasattr(record, field):
+                log_record[field] = getattr(record, field)
+        
         return json.dumps(log_record, ensure_ascii=False)
 
 

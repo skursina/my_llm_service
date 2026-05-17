@@ -23,9 +23,3 @@ async def chat(request: ChatRequest):
 
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
-
-    except Exception:
-        raise HTTPException(
-            status_code=503,
-            detail="Сервис временно недоступен",
-        )

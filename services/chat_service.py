@@ -6,7 +6,7 @@ from config.settings import settings
 from llm.client import LLMClient
 from llm.prompts import SYSTEM_PROMPT, build_prompt
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("llm_service")
 
 
 class ChatService:
@@ -21,7 +21,7 @@ class ChatService:
             "Pipeline started",
             extra={
                 "event": "pipeline_started",
-                "message": message
+                "user_message": message
             }
         )
 
@@ -44,7 +44,7 @@ class ChatService:
                 "Cache hit",
                 extra={
                     "event": "cache_hit",
-                    "message": message,
+                    "user_message": message,
                     "answer": cached_answer
                 }
             )
@@ -76,12 +76,15 @@ class ChatService:
             }
 
         except Exception as error:
-            logger.error({
-                "event": "fallback",
-                "error": str(error),
-                "type": type(error).__name__
-            })
-
+            logger.error(
+                "Pipeline failed",
+                extra={
+                    "event": "fallback",
+                    "error": str(error),
+                    "error_type": type(error).__name__
+                    }
+                )
+            
             return {
                 "answer": "Сервис временно недоступен, попробуйте позже.",
                 "source": "fallback",

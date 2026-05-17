@@ -12,12 +12,9 @@ async def log_middleware(request: Request, call_next):
     logger.info(
         "Incoming request",
         extra={
-            "extra": {
-                "method": request.method,
-                "url": str(request.url),
-                "message": request.query_params.get("message", ""),
-                "client_host": request.client.host,
-            }
+            "method": request.method,
+            "url": str(request.url),
+            "client_host": request.client.host,
         }
     )
     
@@ -29,11 +26,8 @@ async def log_middleware(request: Request, call_next):
         logger.info(
             "Request completed",
             extra={
-                "extra": {
-                    "status_code": response.status_code,
-                    "answer": response.body,
-                    "duration_sec": round(duration, 3)
-                }
+                "status_code": response.status_code,
+                "duration_sec": round(duration, 3)
             }
         )
         
@@ -45,10 +39,8 @@ async def log_middleware(request: Request, call_next):
         logger.error(
             "Request failed",
             extra={
-                "extra": {
-                    "error": str(exc),
-                    "duration_sec": round(duration, 3)
-                }
+                "error": str(exc),
+                "duration_sec": round(duration, 3)
             }
         )
         raise
